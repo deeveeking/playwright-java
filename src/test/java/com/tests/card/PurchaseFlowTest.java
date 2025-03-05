@@ -6,6 +6,7 @@ import com.pages.CheckOutPage;
 import com.tests.base.BaseTest;
 import com.utils.RandomUtils;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,6 +23,7 @@ public class PurchaseFlowTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void checkThatUserCanPurchaseProductTest() {
         ShippingInfoModel shippingInfoModel = RandomUtils.getRandomShippingInfo();
         String expectedHeaderText = "Thank you for your order!";
@@ -47,6 +49,7 @@ public class PurchaseFlowTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void checkErrorMessageWhenFirstNameNotFilledTest() {
         String expectedMessage = "Error: First Name is required";
 

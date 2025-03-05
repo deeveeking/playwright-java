@@ -3,6 +3,7 @@ package com.tests.card;
 import com.pages.CartPage;
 import com.tests.base.BaseTest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class AddProductToCartTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void productCanBeAddedToTheCartTest() {
         productsPage.addProductToTheCart(productName);
         CartPage cartPage = productsPage.headerComponent.openCart();
@@ -28,6 +30,7 @@ public class AddProductToCartTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void productCanBeRemovedFromTheCartTest() {
         productsPage.addProductToTheCart(productName);
 

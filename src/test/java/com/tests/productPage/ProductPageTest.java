@@ -2,6 +2,7 @@ package com.tests.productPage;
 
 import com.enums.SortingEnum;
 import com.tests.base.BaseTest;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class ProductPageTest extends BaseTest {
 
     @Test
+    @Tag("regressionTest")
     public void checkSortingByNameAscendingTest() {
         String firstItemName = "Sauce Labs Backpack";
         String lastItemName = "T-Shirt";
@@ -28,6 +30,7 @@ public class ProductPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void checkSortingByNameDescendingTest() {
         String firstItemName = "Sauce Labs Backpack";
         String secondItemName = "T-Shirt";
@@ -45,6 +48,7 @@ public class ProductPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void checkRemoveButtonIsPresentForProductTest() {
         String productName = productsPage.getAllProductsName().getFirst();
 
@@ -56,6 +60,7 @@ public class ProductPageTest extends BaseTest {
     }
 
     @Test
+    @Tag("regressionTest")
     public void checkPriceForProductTest() {
         String productName = productsPage.getAllProductsName().getFirst();
         String expectedPrice = "29.99";
