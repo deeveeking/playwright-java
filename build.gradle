@@ -24,5 +24,14 @@ dependencies {
 
 tasks.test {
     systemProperties = System.getProperties() as Map<String, ?>
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags "loginTest"
+    }
+}
+
+tasks.register("loginTest", Test) {
+    useJUnitPlatform {
+        includeTags "loginTest"
+    }
+    mustRunAfter check
 }
