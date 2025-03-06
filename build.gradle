@@ -30,6 +30,7 @@ tasks.test {
 }
 
 tasks.register("loginTest", Test) {
+    systemProperties = System.getProperties() as Map<String, ?>
     useJUnitPlatform {
         includeTags "loginTest"
     }
