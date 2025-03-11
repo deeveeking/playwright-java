@@ -1,14 +1,14 @@
-isUserNeedToBeLogin = "${isUserNeedToBeLogin}"
+isLoginTest = "${isUserNeedToBeLogin}"
 
 node {
-    withEnv(["isUserNeedToBeLogin=${isUserNeedToBeLogin}"]) {
+    withEnv(["isLoginTest=$isLoginTest"]) {
         try {
             stage("Run Test") {
-                echo "Var value = $isUserNeedToBeLogin"
-                if ("$isUserNeedToBeLogin") {
-                    labelledShell(label: "Run default test", script: "chmod +x gradlew \n./gradlew clean loginTest -DisUserNeedToBeLogin=${isUserNeedToBeLogin}")
+                echo "Var value = $isLoginTest"
+                if (isLoginTest) {
+                    labelledShell(label: "Run default test", script: "chmod +x gradlew \n./gradlew clean loginTest -DisUserNeedToBeLogin=${isLoginTest}")
                 } else {
-                    labelledShell(label: "Run Login test", script: "chmod +x gradlew \n./gradlew clean test -DisUserNeedToBeLogin=${isUserNeedToBeLogin}")
+                    labelledShell(label: "Run Login test", script: "chmod +x gradlew \n./gradlew clean test -DisUserNeedToBeLogin=${isLoginTest}")
                 }
             }
         } finally {
