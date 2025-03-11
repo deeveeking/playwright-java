@@ -2,10 +2,8 @@ pipline {
     stages {
 
         stage ('Getting parameters') {
-            steps {
-                script {
-                    properties([parameters([boolean('isUserNeedToBeLogin')])])
-                }
+            parameters {
+                boolean (name: 'isUserNeedToBeLogin')
             }
         }
         stage('Execute shell script for running test') {
