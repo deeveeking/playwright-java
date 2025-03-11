@@ -25,7 +25,7 @@ def generateAllure() {
             includeProperties: true,
             jdk: '',
             properties: [],
-            reportBuildPolice: 'ALWAYS',
+            reportBuildPolicy: 'ALWAYS',
             results: [[path: 'build/allure-results']]
     ])
 }
