@@ -5,7 +5,7 @@ node {
         try {
             stage("Run Test") {
                 echo "Var value = $isLoginTest"
-                if (isLoginTest) {
+                if ("$isLoginTest") {
                     labelledShell(label: "Run default test", script: "chmod +x gradlew \n./gradlew clean loginTest -DisUserNeedToBeLogin=${isLoginTest}")
                 } else {
                     labelledShell(label: "Run Login test", script: "chmod +x gradlew \n./gradlew clean test -DisUserNeedToBeLogin=${isLoginTest}")
