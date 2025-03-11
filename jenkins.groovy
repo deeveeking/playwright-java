@@ -1,11 +1,9 @@
 pipline {
     stages {
-
-        stage ('Getting parameters') {
-            parameters {
-                boolean (name: 'isUserNeedToBeLogin')
-            }
+        parameters {
+            booleanParam 'isUserNeedToBeLogin'
         }
+
         stage('Execute shell script for running test') {
             steps {
                 echo 'Executing shell script'
