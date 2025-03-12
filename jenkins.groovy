@@ -3,7 +3,8 @@ projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
         withEnv(["isLoginTest=$isLoginTest"]) {
-            jdk "${env.JAVA_HOME}"
+            env.JAVA_HOME="${tool 'jdk-21'}"
+            env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
             try {
                 stage("Run Test") {
                     downloadProject("$projectUrl", "master")
