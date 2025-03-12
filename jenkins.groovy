@@ -2,7 +2,7 @@ isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
-    scmCheckout{
+    checkout{
         java_version = "jdk-21"
     }
         withEnv(["isLoginTest=$isLoginTest"]) {
