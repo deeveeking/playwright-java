@@ -1,10 +1,12 @@
 isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
+tools {
+    jdk 'JAVA_HOME'
+}
+
+
 node {
-    tool {
-        jdk 'JAVA_HOME'
-    }
         withEnv(["isLoginTest=$isLoginTest"]) {
             try {
                 stage("Run Test") {
