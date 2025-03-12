@@ -2,22 +2,35 @@ isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
-    withEnv(["isLoginTest=$isLoginTest"]) {
-        try {
-            stage("Run Test") {
-                downloadProject("$projectUrl", "master")
-                echo "Var value = $isLoginTest"
-                if (Boolean.parseBoolean("$isLoginTest")) {
-                    echo "Run default test"
-                    labelledShell(label: "Run default test", script: "chmod +x gradlew \n./gradlew clean loginTest -DisUserNeedToBeLogin=${isLoginTest}")
-                } else {
-                    echo "Run Login test"
-                    labelledShell(label: "Run Login test", script: "chmod +x gradlew \n./gradlew clean test -DisUserNeedToBeLogin=${isLoginTest}")
-                }
+    tools {
+        openjdk 'jdk-21'
+    }
+    withAnt(installation: 'LocalAnt') {
+        sh "ant build"
+        withEnv(["isLoginTest=$isLoginTest"]) {
+            stage("Parameters") {
+                properties([
+                        parameters([
+                                booleanParam(defaultValue: false, description: 'Need login before test?', name: 'isNeedLoginBefore')
+                        ])
+                ])
             }
-        } finally {
-            generateAllure()
-            echo "Some fails..."
+            try {
+                stage("Run Test") {
+                    downloadProject("$projectUrl", "master")
+                    echo "Var value = $isLoginTest"
+                    if (Boolean.parseBoolean("$isLoginTest")) {
+                        echo "Run default test"
+                        labelledShell(label: "Run default test", script: "chmod +x gradlew \n./gradlew clean loginTest -DisUserNeedToBeLogin=${isLoginTest}")
+                    } else {
+                        echo "Run Login test"
+                        labelledShell(label: "Run Login test", script: "chmod +x gradlew \n./gradlew clean test -DisUserNeedToBeLogin=${isLoginTest}")
+                    }
+                }
+            } finally {
+                generateAllure()
+                echo "Some fails..."
+            }
         }
     }
 }
