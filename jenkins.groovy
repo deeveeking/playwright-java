@@ -3,7 +3,7 @@ projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
     tool {
-        jdk: "oracle-jdk23"
+        jdk: "oracle-jdk23".toString()
     }
         withEnv(["isLoginTest=$isLoginTest"]) {
             try {
