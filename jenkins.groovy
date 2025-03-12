@@ -2,11 +2,10 @@ isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
+    tool {
+        jdk: "oracle-jdk23"
+    }
         withEnv(["isLoginTest=$isLoginTest"]) {
-            echo "JAVA ${env.JAVA_HOME}"
-            withAnt(installation: 'myinstall') {
-                sh "ant mytarget"
-            }
             try {
                 stage("Run Test") {
                     downloadProject("$projectUrl", "master")
