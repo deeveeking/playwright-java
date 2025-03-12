@@ -5,6 +5,7 @@ node {
         withEnv(["isLoginTest=$isLoginTest"]) {
             env.JAVA_HOME="${tool 'JAVA_HOME'}"
             env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+            echo "Java ${env.JAVA_HOME}"
             try {
                 stage("Run Test") {
                     downloadProject("$projectUrl", "master")
