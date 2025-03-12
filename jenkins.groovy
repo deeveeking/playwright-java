@@ -3,7 +3,7 @@ projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
     tool {
-        jdk 'jdk-21'
+        jdk: 'jdk-21'
     }
     withAnt(installation: 'LocalAnt') {
         sh "ant build"
