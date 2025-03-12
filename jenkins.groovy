@@ -1,10 +1,10 @@
 isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
+env.JAVA_HOME = "${tool 'openjdk-21'}"
+env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+
 node {
-    tool {
-        jdk: 'jdk-21'
-    }
     withAnt(installation: 'LocalAnt') {
         sh "ant build"
         withEnv(["isLoginTest=$isLoginTest"]) {
