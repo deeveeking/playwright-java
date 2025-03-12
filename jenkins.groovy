@@ -2,9 +2,8 @@ isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
-    tool {
-        env.JAVA_HOME = "${tool 'openjdk-21'}"
-        env.PATH = "${env.JAVA_HOME}/bin:${env.PATH}"
+    agent {
+        docker 'openjdk:jdk-21'
     }
         withEnv(["isLoginTest=$isLoginTest"]) {
             try {
