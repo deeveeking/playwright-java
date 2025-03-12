@@ -26,7 +26,7 @@ def downloadProject(String url, String branch) {
     cleanWs()
     checkout scm: [
             $class: 'GitSCM', branches: [[name: branch]],
-            userRemoteConfings: [[
+            userRemoteConfigs: [[
                     url: url
             ]]
     ]
