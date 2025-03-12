@@ -5,7 +5,7 @@ node {
     withEnv(["isLoginTest=$isLoginTest"]) {
         try {
             stage("Run Test") {
-                downloadProject(projectUrl, 'master')
+                downloadProject("$projectUrl", "master")
                 echo "Var value = $isLoginTest"
                 if (Boolean.parseBoolean("$isLoginTest")) {
                     echo "Run default test"
