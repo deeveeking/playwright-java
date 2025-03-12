@@ -3,18 +3,11 @@ projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
     tool {
-        openjdk 'jdk-21'
+        jdk 'jdk-21'
     }
     withAnt(installation: 'LocalAnt') {
         sh "ant build"
         withEnv(["isLoginTest=$isLoginTest"]) {
-            stage("Parameters") {
-                properties([
-                        parameters([
-                                booleanParam(defaultValue: false, description: 'Need login before test?', name: 'isNeedLoginBefore')
-                        ])
-                ])
-            }
             try {
                 stage("Run Test") {
                     downloadProject("$projectUrl", "master")
