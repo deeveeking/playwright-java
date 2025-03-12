@@ -2,7 +2,7 @@ isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
-    tools {
+    tool {
         openjdk 'jdk-21'
     }
     withAnt(installation: 'LocalAnt') {
