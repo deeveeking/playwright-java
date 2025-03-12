@@ -1,9 +1,11 @@
 isLoginTest = "${isUserNeedToBeLogin}"
+projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
     withEnv(["isLoginTest=$isLoginTest"]) {
         try {
             stage("Run Test") {
+                downloadProject(projectUrl, 'master')
                 echo "Var value = $isLoginTest"
                 if (Boolean.parseBoolean("$isLoginTest")) {
                     echo "Run default test"
@@ -18,6 +20,16 @@ node {
             echo "Some fails..."
         }
     }
+}
+
+def downloadProject(String url, String branch) {
+    cleanWs()
+    checkout scm: [
+            $class: 'GitSCM', branches: [[name: branch]],
+            userRemoteConfings: [[
+                    url: url
+            ]]
+    ]
 }
 
 def generateAllure() {
