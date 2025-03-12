@@ -1,9 +1,9 @@
 isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
-pipline {
-    tools {
-        jdk 'oracle-jdk-23'
+node {
+    tool {
+        jdk 'JAVA_HOME'
     }
         withEnv(["isLoginTest=$isLoginTest"]) {
             try {
