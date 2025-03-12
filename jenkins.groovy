@@ -3,7 +3,7 @@ projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
         withEnv(["isLoginTest=$isLoginTest"]) {
-            env.JAVA_HOME="${tool 'JAVA_HOME'}"
+            env.JAVA_HOME="${tool 'java-21'}"
             env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
             echo "Java ${env.JAVA_HOME}"
             try {
