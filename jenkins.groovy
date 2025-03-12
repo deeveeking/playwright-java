@@ -2,10 +2,11 @@ isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
 
 node {
-    agent {
-        docker 'openjdk:jdk-21'
-    }
         withEnv(["isLoginTest=$isLoginTest"]) {
+            echo "JAVA ${env.JAVA_HOME}"
+            withAnt(installation: 'myinstall') {
+                sh "ant mytarget"
+            }
             try {
                 stage("Run Test") {
                     downloadProject("$projectUrl", "master")
