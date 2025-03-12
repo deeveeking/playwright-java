@@ -1,10 +1,9 @@
 isLoginTest = "${isUserNeedToBeLogin}"
 projectUrl = "https://github.com/deeveeking/playwright-java.git"
-pipline {
-    tools {
-        jdk 'JAVA_HOME'
-    }
+
+node {
         withEnv(["isLoginTest=$isLoginTest"]) {
+            jdk 'JAVA_HOME'
             try {
                 stage("Run Test") {
                     downloadProject("$projectUrl", "master")
